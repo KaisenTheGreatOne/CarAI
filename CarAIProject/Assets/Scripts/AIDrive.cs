@@ -3,16 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 public class AIDrive : MonoBehaviour
 {
-    [Header("AI")]
-    [SerializeField] private Transform RayOrigin;
-    [SerializeField] private float distanceF;
-    [SerializeField] private float distanceR;
-    [SerializeField] private float distanceL;
-    [SerializeField] private float connectionDistanceFGas;
-    [SerializeField] private float connectionDistanceFBreak;
-    [SerializeField] private float connectionDistanceRSteer;
-    [SerializeField] private float connectionDistanceLSteer;
-
     [Header("Physics")]
     private Rigidbody PhRb;
     [SerializeField] private Vector3 PhRbCenterOfMass;
@@ -68,55 +58,24 @@ public class AIDrive : MonoBehaviour
 
     void Update()
     {
-        RaycastHit hit;
-
-        if (Physics.Raycast(RayOrigin.position, transform.forward, out hit))
-        {
-            distanceF = Vector3.Distance(RayOrigin.position, hit.point);
-        }
-
-        RaycastHit hitR;
-        Vector3 vectorR = Quaternion.AngleAxis(45, Vector3.up) * transform.forward;
-        if (Physics.Raycast(RayOrigin.position, vectorR, out hitR))
-        {
-            distanceR = Vector3.Distance(RayOrigin.position, hitR.point);
-        }
-
-        RaycastHit hitL;
-        Vector3 vectorL = Quaternion.AngleAxis(-45, Vector3.up) * transform.forward;
-        if (Physics.Raycast(RayOrigin.position, vectorL, out hitL))
-        {
-            distanceL = Vector3.Distance(RayOrigin.position, hitL.point);
-        }
-
-        Debug.DrawRay(RayOrigin.position, transform.forward * 10, Color.yellow);
-        Debug.DrawRay(RayOrigin.position, vectorR * 20, Color.green);
-        Debug.DrawRay(RayOrigin.position, vectorL * 20, Color.red);
-
-        if (distanceR < distanceL)
-        {
-            if (swCurrentSteerangle > -30)
-            {
-                swCurrentSteerangle -= 3 * ((distanceL - distanceR) * 0.01f);
-            }
-        }
-        else
-        {
-            if (swCurrentSteerangle < 30)
-            {
-                swCurrentSteerangle += 3 * ((distanceR - distanceL) * 0.01f);
-            }
-        }
-
-        if (distanceL > 20 && distanceR > 20)
-        {
-            swMaxSteerAnge = 0;
-        }
-
         Steer();
         Drive();
     }
 
+    public void SetInpX(float value)
+    {
+        inpX = value;
+    }
+
+    public void SetInpY(float value)
+    {
+        inpY = value;
+    }
+
+    public void SetInpRev(float value)
+    {
+        inpRev = value;
+    }
 
     private void GetTireInfo()
     {
