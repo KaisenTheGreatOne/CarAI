@@ -1715,6 +1715,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1120993461}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1068129700 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4923235662736053824, guid: db08a3ceafc7aa647b22eb149eb4ef76,
+    type: 3}
+  m_PrefabInstance: {fileID: 1293116080}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1120993461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2167,6 +2173,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8080524304019209482, guid: db08a3ceafc7aa647b22eb149eb4ef76,
         type: 3}
+      propertyPath: inpY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080524304019209482, guid: db08a3ceafc7aa647b22eb149eb4ef76,
+        type: 3}
       propertyPath: OWOWheelObjectsL.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -2587,7 +2598,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779404551}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.522, z: 0}
+  m_LocalPosition: {x: 0, y: 0.889, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3083,12 +3094,34 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1740760541}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2098937462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6355445146214244200, guid: db08a3ceafc7aa647b22eb149eb4ef76,
+    type: 3}
+  m_PrefabInstance: {fileID: 1293116080}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2098937465 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6352037498936594846, guid: db08a3ceafc7aa647b22eb149eb4ef76,
     type: 3}
   m_PrefabInstance: {fileID: 1293116080}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2098937466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098937462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d6f37e33b72b746a312dfea6d7742d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RayOrigin: {fileID: 1068129700}
+  distanceF: 0
+  distanceR: 0
+  distanceL: 0
 --- !u!4 &2116309842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6997373009194187161, guid: 23f1f543448deb14ab5405d0ae72b416,
