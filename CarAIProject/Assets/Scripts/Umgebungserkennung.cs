@@ -11,13 +11,20 @@ public class Umgebungserkennung : MonoBehaviour
     [SerializeField] private float distanceR;
     [SerializeField] private float distanceL;
 
+    private void Update()
+    {
+        GetRayInfoFront();
+        GetRayInforFR();
+        GetRayInforFL();
+    }
+
     public RaycastHit GetRayInfoFront()
     {
         RaycastHit hit;
 
         if (Physics.Raycast(RayOrigin.position, transform.forward, out hit))
         {
-            return hit;
+            distanceF = Vector3.Distance(RayOrigin.position, hit.point);
         }
 
         Debug.DrawRay(RayOrigin.position, transform.forward * 10, Color.yellow);
@@ -32,7 +39,7 @@ public class Umgebungserkennung : MonoBehaviour
 
         if (Physics.Raycast(RayOrigin.position, vectorR, out hitR))
         {
-            return hitR;
+            distanceR = Vector3.Distance(RayOrigin.position, hitR.point);
         }
 
         Debug.DrawRay(RayOrigin.position, vectorR * 20, Color.green);
@@ -47,7 +54,7 @@ public class Umgebungserkennung : MonoBehaviour
 
         if (Physics.Raycast(RayOrigin.position, vectorL, out hitL))
         {
-            return hitL;
+            distanceL = Vector3.Distance(RayOrigin.position, hitL.point);
         }
 
         Debug.DrawRay(RayOrigin.position, vectorL * 20, Color.red);
@@ -57,17 +64,17 @@ public class Umgebungserkennung : MonoBehaviour
 
     public float GetDistanceFront()
     {
-        return Vector3.Distance(RayOrigin.position, GetRayInfoFront().point);
+        return distanceF;
     }
 
     public float GetDistanceFR()
     {
-        return Vector3.Distance(RayOrigin.position, GetRayInforFR().point);
+        return distanceR;
     }
 
     public float GetDistanceFL()
     {
-        return Vector3.Distance(RayOrigin.position, GetRayInforFL().point);
+        return distanceL;
     }
 
 }

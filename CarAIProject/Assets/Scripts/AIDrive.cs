@@ -77,6 +77,11 @@ public class AIDrive : MonoBehaviour
         inpRev = value;
     }
 
+    public float GetSpeed()
+    {
+        return csSpeed;
+    }
+
     private void GetTireInfo()
     {
         WheelHit hit = new WheelHit();
@@ -173,7 +178,7 @@ public class AIDrive : MonoBehaviour
     {
         foreach (WheelCollider wheels in OSWSteeringWheels)
         {
-            wheels.steerAngle = swCurrentSteerangle;
+            wheels.steerAngle = swMaxSteerAnge * inpX;
         }
     }
 

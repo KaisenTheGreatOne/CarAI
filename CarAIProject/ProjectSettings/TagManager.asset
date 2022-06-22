@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Car
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - Water
   - UI
   - Car
-  - 
-  - 
+  - CheckPoint
+  - Learner
   - 
   - 
   - 
