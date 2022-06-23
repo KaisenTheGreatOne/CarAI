@@ -335,26 +335,6 @@ public class AIDrive : MonoBehaviour
         }
     }
 
-    private void UpdateWheelPoses()
-    {
-        for (int i = 0; i < OWOWheelObjectsR.Length; i++)
-        {
-            Vector3 _posR;
-            Quaternion _rotR;
-            Vector3 _posL;
-            Quaternion _rotL;
-
-            ODWDrivingWheelsR[i].GetWorldPose(out _posR, out _rotR);
-            ODWDrivingWheelsL[i].GetWorldPose(out _posL, out _rotL);
-
-            OWOWheelObjectsR[i].transform.position = _posR;
-            OWOWheelObjectsL[i].transform.position = _posL;
-
-            OWOWheelObjectsR[i].transform.rotation = _rotR;
-            OWOWheelObjectsL[i].transform.rotation = _rotL;
-        }
-    }
-
     private void LateUpdate()
     {
         if (dwDirtyness >= csCurrentTireStatus)
@@ -362,6 +342,5 @@ public class AIDrive : MonoBehaviour
             dwDirtyness = csCurrentTireStatus;
         }
 
-        UpdateWheelPoses();
     }
 }

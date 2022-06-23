@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Manager : MonoBehaviour
@@ -65,14 +66,14 @@ public class Manager : MonoBehaviour
 
     }
 
-
     public void SortNetworks()
     {
         for (int i = 0; i < populationSize; i++)
         {
             cars[i].UpdateFitness();//gets bots to set their corrosponding networks fitness
         }
-        networks.Sort();
+        networks = networks.OrderBy(o => o.fitness).ToList();
+
         networks[populationSize - 1].Save("Assets/Save.txt");//saves networks weights and biases to file, to preserve network performance
         for (int i = 0; i < populationSize / 2; i++)
         {

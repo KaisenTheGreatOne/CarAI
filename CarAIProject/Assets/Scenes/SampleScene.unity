@@ -2807,7 +2807,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978373496}
   m_LocalRotation: {x: -0, y: 0.7090256, z: -0, w: 0.7051828}
-  m_LocalPosition: {x: 319.83, y: 0.496, z: 59.76}
+  m_LocalPosition: {x: 418.25, y: 0.496, z: 59.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3679,10 +3679,10 @@ MonoBehaviour:
   timeframe: 30
   populationSize: 40
   prefab: {fileID: 6355445146214244200, guid: db08a3ceafc7aa647b22eb149eb4ef76, type: 3}
-  layers: 050000000300000002000000
-  MutationChance: 0.1
-  MutationStrength: 0.2
-  Gamespeed: 7
+  layers: 050000000600000002000000
+  MutationChance: 0.01
+  MutationStrength: 0.1
+  Gamespeed: 2.79
 --- !u!4 &1353101762
 Transform:
   m_ObjectHideFlags: 0
@@ -3691,7 +3691,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1353101760}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 326.30206, y: -9.750881, z: 59.860043}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

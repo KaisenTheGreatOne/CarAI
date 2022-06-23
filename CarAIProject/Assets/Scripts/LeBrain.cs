@@ -16,11 +16,15 @@ public class LeBrain : MonoBehaviour
 
     [SerializeField] string currentWeights;
 
+    private List<string> gateNames;
+
     void Start()
     {
         SUmgebung = gameObject.GetComponent<Umgebungserkennung>();
         SAiDrive = gameObject.GetComponent<AIDrive>();
         GetWeights();
+
+        gateNames = new List<string>();
     }
 
     public bool collided;//To tell if the car has crashed
@@ -52,18 +56,34 @@ public class LeBrain : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("CheckPoint"))
         {
+            if (collided)
+            {
+                return;
+            }
+
+            foreach (string item in gateNames)
+            {
+                if (other.gameObject.name == item)
+                {
+                    position--;
+                    return;
+                }
+            }
+
             position++;
+
+            gateNames.Add(other.gameObject.name);
         }
-        //else if (other.gameObject.layer != LayerMask.NameToLayer("CheckPoint"))
-        //{
-        //    collided = true;//stop operation if car has collided
-        //}
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        collided = true;
+    }
 
     public void UpdateFitness()
     {
-        SNeuralNetwork.fitness = distanceTraveled / 100;//updates fitness of network for sorting
+        SNeuralNetwork.fitness = position;//updates fitness of network for sorting
     }
 
     private void GetWeights()
