@@ -16,7 +16,7 @@ public class LeBrain : MonoBehaviour
 
     [SerializeField] string currentWeights;
 
-    private List<string> gateNames;
+    private List<int> gateNames;
 
     void Start()
     {
@@ -24,7 +24,7 @@ public class LeBrain : MonoBehaviour
         SAiDrive = gameObject.GetComponent<AIDrive>();
         GetWeights();
 
-        gateNames = new List<string>();
+        gateNames = new List<int>();
     }
 
     public bool collided;//To tell if the car has crashed
@@ -56,23 +56,23 @@ public class LeBrain : MonoBehaviour
     {
         if (other.gameObject.CompareTag("CheckPoint"))
         {
-            if (collided)
+            foreach (int item in gateNames)
             {
-                return;
-            }
-
-            foreach (string item in gateNames)
-            {
-                if (other.gameObject.name == item)
+                if (other.gameObject.GetInstanceID() == item)
                 {
                     //position--;
                     return;
                 }
             }
 
+            if (collided)
+            {
+                return;
+            }
+
             position++;
 
-            gateNames.Add(other.gameObject.name);
+            gateNames.Add(other.gameObject.GetInstanceID());
         }
     }
 

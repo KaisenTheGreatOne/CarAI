@@ -22,7 +22,7 @@ public class Umgebungserkennung : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(RayOrigin.position, transform.forward, out hit))
+        if (Physics.Raycast(RayOrigin.position, transform.forward, out hit, 1000, LayerMask.NameToLayer("CheckPoint")))
         {
             distanceF = Vector3.Distance(RayOrigin.position, hit.point);
         }
@@ -37,7 +37,7 @@ public class Umgebungserkennung : MonoBehaviour
         RaycastHit hitR;
         Vector3 vectorR = Quaternion.AngleAxis(45, Vector3.up) * transform.forward;
 
-        if (Physics.Raycast(RayOrigin.position, vectorR, out hitR))
+        if (Physics.Raycast(RayOrigin.position, vectorR, out hitR, 1000, LayerMask.NameToLayer("CheckPoint")))
         {
             distanceR = Vector3.Distance(RayOrigin.position, hitR.point);
         }
@@ -52,7 +52,7 @@ public class Umgebungserkennung : MonoBehaviour
         RaycastHit hitL;
         Vector3 vectorL = Quaternion.AngleAxis(-45, Vector3.up) * transform.forward;
 
-        if (Physics.Raycast(RayOrigin.position, vectorL, out hitL))
+        if (Physics.Raycast(RayOrigin.position, vectorL, out hitL, 1000, LayerMask.NameToLayer("CheckPoint")))
         {
             distanceL = Vector3.Distance(RayOrigin.position, hitL.point);
         }
