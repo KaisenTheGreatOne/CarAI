@@ -54,7 +54,7 @@ public class LeBrain : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("CheckPoint"))
+        if (other.gameObject.CompareTag("CheckPoint"))
         {
             if (collided)
             {
@@ -65,7 +65,7 @@ public class LeBrain : MonoBehaviour
             {
                 if (other.gameObject.name == item)
                 {
-                    position--;
+                    //position--;
                     return;
                 }
             }

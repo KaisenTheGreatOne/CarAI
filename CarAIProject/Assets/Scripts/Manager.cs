@@ -80,17 +80,25 @@ public class Manager : MonoBehaviour
             {
                 bestFitness = (int)networks[i].fitness;
                 bestNetwork = networks[i];
+                bestNetwork.Save(Application.dataPath + "/BestNetwork.txt");
             }     
         }
 
         networks = networks.OrderBy(o => o.fitness).ToList();
 
-        networks[populationSize - 1].Save(Application.dataPath + "/Save.txt");//saves networks weights and biases to file, to preserve network performance
+        networks[populationSize - 1].Save(Application.dataPath + "/Save.txt");
 
         for (int i = 0; i < populationSize / 2; i++)
         {
-            //networks[i] = networks[i + populationSize / 2].copy(new NeuralNetwork(layers));
-            networks[i] = bestNetwork.copy(new NeuralNetwork(layers));
+            if (bestNetwork != null)
+            {
+                networks[i] = bestNetwork.copy(new NeuralNetwork(layers));
+            }
+            else
+            {
+                networks[i] = networks[i + populationSize / 2].copy(new NeuralNetwork(layers));
+            }
+
             networks[i].Mutate((int)(1 / MutationChance), MutationStrength);
 
             //if (i == populationSize / 2 - 1)
