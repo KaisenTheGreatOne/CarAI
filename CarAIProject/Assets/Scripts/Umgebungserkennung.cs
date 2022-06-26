@@ -27,7 +27,7 @@ public class Umgebungserkennung : MonoBehaviour
             distanceF = Vector3.Distance(RayOrigin.position, hit.point);
         }
 
-        Debug.DrawRay(RayOrigin.position, transform.forward * 10, Color.yellow);
+        //Debug.DrawRay(RayOrigin.position, transform.forward * 10, Color.yellow);
 
         return hit;
     }
@@ -42,7 +42,7 @@ public class Umgebungserkennung : MonoBehaviour
             distanceR = Vector3.Distance(RayOrigin.position, hitR.point);
         }
 
-        Debug.DrawRay(RayOrigin.position, vectorR * 20, Color.green);
+        //Debug.DrawRay(RayOrigin.position, vectorR * 20, Color.green);
 
         return hitR;
     }
@@ -57,7 +57,7 @@ public class Umgebungserkennung : MonoBehaviour
             distanceL = Vector3.Distance(RayOrigin.position, hitL.point);
         }
 
-        Debug.DrawRay(RayOrigin.position, vectorL * 20, Color.red);
+        //Debug.DrawRay(RayOrigin.position, vectorL * 20, Color.red);
 
         return hitL;
     }

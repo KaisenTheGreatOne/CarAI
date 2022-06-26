@@ -6,7 +6,7 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {
     public Transform startPos;
-
+    public int Generations;
     public float timeframe;
     public int populationSize;//creates population size
     public GameObject prefab;//holds bot prefab
@@ -22,6 +22,9 @@ public class Manager : MonoBehaviour
     //public List<Bot> Bots;
     public List<NeuralNetwork> networks;
     private List<LeBrain> cars;
+
+    private NeuralNetwork bestNetwork;
+    public int bestFitness;
 
     void Start()// Start is called before the first frame update
     {
@@ -46,6 +49,7 @@ public class Manager : MonoBehaviour
     public void CreateBots()
     {
         Time.timeScale = Gamespeed;//sets gamespeed, which will increase to speed up training
+        Generations++;
         if (cars != null)
         {
             for (int i = 0; i < cars.Count; i++)
@@ -71,14 +75,33 @@ public class Manager : MonoBehaviour
         for (int i = 0; i < populationSize; i++)
         {
             cars[i].UpdateFitness();//gets bots to set their corrosponding networks fitness
+
+            if (networks[i].fitness > bestFitness)
+            {
+                bestFitness = (int)networks[i].fitness;
+                bestNetwork = networks[i];
+            }     
         }
+
         networks = networks.OrderBy(o => o.fitness).ToList();
 
         networks[populationSize - 1].Save(Application.dataPath + "/Save.txt");//saves networks weights and biases to file, to preserve network performance
+
         for (int i = 0; i < populationSize / 2; i++)
         {
-            networks[i] = networks[i + populationSize / 2].copy(new NeuralNetwork(layers));
+            //networks[i] = networks[i + populationSize / 2].copy(new NeuralNetwork(layers));
+            networks[i] = bestNetwork.copy(new NeuralNetwork(layers));
             networks[i].Mutate((int)(1 / MutationChance), MutationStrength);
+
+            //if (i == populationSize / 2 - 1)
+            //{
+            //    networks[i] = bestNetwork.copy(new NeuralNetwork(layers));
+            //}
+
+            //if (i == populationSize / 2 - 2)
+            //{
+            //    networks[i] = bestNetwork.copy(new NeuralNetwork(layers));
+            //}
         }
     }
 }

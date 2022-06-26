@@ -224,7 +224,7 @@ public class NeuralNetwork : IComparable<NeuralNetwork>
         {
             for (int j = 0; j < biases[i].Length; j++)
             {
-                weight += biases[i][j] + "/ ";
+                weight += biases[i][j] + Environment.NewLine;
             }
         }
 
@@ -234,7 +234,7 @@ public class NeuralNetwork : IComparable<NeuralNetwork>
             {
                 for (int k = 0; k < weights[i][j].Length; k++)
                 {
-                    weight += weights[i][j][k] + "/ ";
+                    weight += weights[i][j][k] + Environment.NewLine;
                 }
             }
         }
